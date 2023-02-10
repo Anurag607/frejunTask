@@ -1,0 +1,83 @@
+@mixin flex($dir: column, $gap: 0rem) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+}
+
+.loginWrapper {
+    @include flex;
+    width: 100vw;
+    height: 100vh;
+    form {
+        margin-bottom: 3rem;
+        @include flex(column, 1rem);
+        h2 {
+            font-size: 2.25rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            cursor: default;
+        }
+        .warning {
+            display: none;
+            border: transparent;
+            outline: none;
+            background: red;
+            color: #fafafa;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            border-radius: 0.25rem;
+            cursor: default;
+        }
+        .inputField {
+            @include flex(column, 0.5rem);
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            label {
+                color: #344054;
+                font-size: 1.075rem;
+                font-family: 'Inter', sans-serif;
+            }
+            .loginUsername, .loginPass {
+                font-family: 'Inter', sans-serif;
+                outline: none;
+                border: 0.05rem solid #D0D5DD;
+                border-radius: 0.5rem;
+                width: 20rem;
+                height: auto;
+                padding: 0.65rem 1.25rem 0.65rem 0.65rem;
+            }
+        }
+        .loginSubmit {
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            background-color: #34CB65;
+            color: #fafafa;
+            outline: 0;
+            border-color: transparent;
+            width: 21.75rem;
+            height: auto;
+            padding-block: 0.35rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .loginWrapper {
+        form {
+            .inputField {
+                .loginUsername, .loginPass {
+                    width: 15rem;
+                }
+            }
+            .loginSubmit {
+                width: 17rem;
+            }
+        }
+    }
+}

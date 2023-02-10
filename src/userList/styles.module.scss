@@ -1,0 +1,77 @@
+@mixin flex($dir: column, $gap: 0rem) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+}
+
+.userListWrapper {
+    @include flex(column, 2rem);
+    justify-content: flex-start;
+    .navbarWrapper {
+        @include flex(row, 0rem);
+        justify-content: space-between;
+        width: 100vw;
+        height: 4.5rem;
+        background-color: #F9FAFB;
+        h2 {
+            margin: 0rem 0rem 0rem 2rem;
+            padding: 0rem;
+        }
+        button {
+            font-size: 1rem;
+            outline: 0;
+            margin: 0rem 2rem 0rem 0rem;
+            padding: 0rem;
+            color: #344054;
+            border: 0.05rem solid #D0D5DD;
+            background-color: #ffffff;
+            box-sizing: border-box;
+            text-transform: none;
+            letter-spacing: 0rem;
+            padding: 0.25rem 1rem;
+            border-radius: 0.5rem;
+
+        }
+    }
+    .content {
+        @include flex(column, 2rem);
+        div:nth-child(1) {
+            input {
+                padding: 0.65rem;
+                width: 20rem;
+                outline: none;
+            }
+            fieldset {
+                border-radius: 0.5rem;
+                box-shadow: 0px 1px 2px 0px #1018280D;
+                outline: none;
+            }
+        }
+        .userResCont {
+            display: none;
+            opacity: 0;
+            transition: all 0.3s ease-in;
+        }
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .userListWrapper {
+        .content {
+            div:nth-child(1) {
+                margin-left: 1.5rem;
+                input {
+                    width: 10rem !important;
+                }
+                fieldset {
+                    width: 15rem;
+                }
+            }
+            .userResCont {
+                margin-right: 1rem;
+            }
+        }
+    }
+}

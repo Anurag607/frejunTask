@@ -1,0 +1,285 @@
+@mixin flex($dir: column, $gap: 0rem) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+}
+
+.userList {
+    @include flex(column, 0rem);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.25rem #C6CCC8;
+    overflow: hidden;
+    .tableHeadWrapper {
+        background-color: #F9FAFB;
+        overflow: hidden;
+        .tableHeadContainer {
+            .tableHead{
+                .tableRow {
+                    .tableCell {
+                        text-transform: capitalize;
+                        cursor: default;
+                    }
+                    .userHeadCell {
+                        translate: 1.95rem 0rem;
+                        padding-inline: 0rem;
+                    }
+                    .emailHeadCell {
+                        translate: 5.5rem 0rem;
+                        padding-inline: 0rem;
+                    }
+                    .ageHeadCell {
+                        translate: 11rem 0rem;
+                        padding-inline: 0rem;
+                    }
+                    .genderHeadCell {
+                        translate: 7.5rem 0rem;
+                        padding-inline: 0rem;
+                    }
+                }
+            }
+        }
+    }
+    
+    .tableWrapper {
+        .tableContainer {
+            min-width: 600px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            .tableBody {
+                max-height: 350px;
+                overflow-y: scroll;
+                .tableRow {
+                    margin-inline: 0px;
+                    padding-inline: 0px;
+                    .tableCell {
+                        height: 2.5rem !important;
+                        max-height: 2.5rem !important;
+                        text-transform: capitalize;
+                        cursor: default;
+                    }
+                }
+                .userCell {
+                    @include flex(row, 8px);
+                    justify-content: flex-start;
+                    width: 200px;
+                    min-width: 200px;
+                    img {
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 100%;
+                    }
+                }
+                .emailCell {
+                    text-transform: none !important;
+                    width: 270px;
+                    min-width: 270px;
+                    padding-right: 0px;
+                    translate: -22.5px 0px;
+                }
+                .ageCell {
+                    width: 50px;
+                    min-width: 50px;
+                    padding-right: 0px;
+                    translate: -50px 0rem;
+                }
+                .genderCell {
+                    width: 75px;
+                    min-width: 75px;
+                    padding-right: 0px;
+                    translate: -50px 0rem;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .userList {
+        overflow: hidden;
+        margin-right: 0.5rem;
+        .tableHeadWrapper {
+            margin-right: 1.5rem;
+            .tableHeadContainer {
+                .tableHead{
+                    .tableRow {
+                        .tableCell {
+                            text-transform: capitalize;
+                            cursor: default;
+                        }
+                        .userHeadCell {
+                            width: 100px;
+                            max-width: 100px;
+                            translate: 1.95rem 0rem;
+                            padding-inline: 0rem;
+                        }
+                        .emailHeadCell {
+                            width: 150px;
+                            max-width: 150px;
+                            translate: -1rem 0rem;
+                            padding-inline: 0rem;
+                        }
+                        .ageHeadCell {
+                            width: 25px;
+                            max-width: 25px;
+                            translate: -4.5rem 0rem;
+                            padding-inline: 0rem;
+                        }
+                        .genderHeadCell {
+                            width: 25px;
+                            max-width: 25px;
+                            translate: -4.5rem 0rem;
+                            padding-inline: 0rem;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .tableWrapper {
+            .tableContainer {
+                min-width: 300px;
+                .tableBody {
+                    max-height: 350px;
+                    overflow-y: scroll;
+                    .tableRow {
+                        margin-inline: 0px;
+                        padding-inline: 0px;
+                        .tableCell {
+                            height: 2.5rem !important;
+                            max-height: 2.5rem !important;
+                            text-transform: capitalize;
+                            cursor: default;
+                        }
+                    }
+                    .userCell {
+                        @include flex(row, 8px);
+                        justify-content: flex-start;
+                        width: 100px;
+                        min-width: 100px;
+                        img {
+                            width: 48px;
+                            height: 48px;
+                            border-radius: 100%;
+                        }
+                    }
+                    .emailCell {
+                        text-transform: none !important;
+                        width: auto;
+                        padding-right: 0px;
+                        translate: 22.5px 0px;
+                    }
+                    .ageCell {
+                        width: 25px !important;
+                        min-width: 25px;
+                        padding-right: 0px;
+                        translate: -50px 0rem;
+                    }
+                    .genderCell {
+                        width: 25px;
+                        min-width: 25px;
+                        padding-right: 0px;
+                        translate: -50px 0rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 535px) {
+    .userList {
+        overflow: scroll;
+        .tableHeadWrapper {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            .tableHeadContainer {
+                .tableHead{
+                    .tableRow {
+                        .tableCell {
+                            text-transform: capitalize;
+                            cursor: default;
+                        }
+                        .userHeadCell {
+                            width: 100px;
+                            max-width: 100px;
+                            translate: 1.95rem 0rem;
+                            padding-inline: 0rem;
+                        }
+                        .emailHeadCell {
+                            width: 150px;
+                            max-width: 150px;
+                            translate: -1rem 0rem;
+                            padding-inline: 0rem;
+                        }
+                        .ageHeadCell {
+                            width: 25px;
+                            max-width: 25px;
+                            translate: -4.5rem 0rem;
+                            padding-inline: 0rem;
+                        }
+                        .genderHeadCell {
+                            width: 25px;
+                            max-width: 25px;
+                            translate: -4.5rem 0rem;
+                            padding-inline: 0rem;
+                        }
+                    }
+                }
+            }
+        }
+        
+        .tableWrapper {
+            .tableContainer {
+                min-width: 300px;
+                width: 300px;
+                max-width: 300px;
+                .tableBody {
+                    max-height: 350px;
+                    overflow-y: scroll;
+                    .tableRow {
+                        margin-inline: 0px;
+                        padding-inline: 0px;
+                        .tableCell {
+                            height: 2.5rem !important;
+                            max-height: 2.5rem !important;
+                            text-transform: capitalize;
+                            cursor: default;
+                        }
+                    }
+                    .userCell {
+                        @include flex(row, 8px);
+                        justify-content: flex-start;
+                        width: 100px;
+                        min-width: 100px;
+                        img {
+                            width: 48px;
+                            height: 48px;
+                            border-radius: 100%;
+                        }
+                    }
+                    .emailCell {
+                        text-transform: none !important;
+                        width: 150px;
+                        min-width: 150px;
+                        padding-right: 0px;
+                        translate: 22.5px 0px;
+                    }
+                    .ageCell {
+                        width: 25px;
+                        min-width: 25px;
+                        padding-right: 0px;
+                        translate: -50px 0rem;
+                    }
+                    .genderCell {
+                        width: 25px;
+                        min-width: 25px;
+                        padding-right: 0px;
+                        translate: -50px 0rem;
+                    }
+                }
+            }
+        }
+    }
+}
