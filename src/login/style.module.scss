@@ -50,6 +50,9 @@
                 height: auto;
                 padding: 0.65rem 1.25rem 0.65rem 0.65rem;
             }
+            .loginUsername:focus, .loginPass:focus {
+                border-color: #34CB65;
+            }
         }
         .loginSubmit {
             font-size: 1rem;

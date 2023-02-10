@@ -35,42 +35,58 @@
 
         }
     }
-    .content {
-        @include flex(column, 2rem);
-        div:nth-child(1) {
-            input {
-                padding: 0.65rem;
-                width: 20rem;
-                outline: none;
-            }
-            fieldset {
-                border-radius: 0.5rem;
-                box-shadow: 0px 1px 2px 0px #1018280D;
-                outline: none;
-            }
-        }
-        .userResCont {
+    .subWrapper {
+        @include flex(column, 0.25rem);
+        .warning {
             display: none;
-            opacity: 0;
-            transition: all 0.3s ease-in;
+            border: transparent;
+            outline: none;
+            color: red;
+            background-color: transparent;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            border-radius: 0.25rem;
+            cursor: default;
+        }
+        .content {
+            @include flex(column, 2rem);
+            div:nth-child(1) {
+                input {
+                    padding: 0.65rem;
+                    width: 20rem;
+                    outline: none;
+                }
+                fieldset {
+                    border-radius: 0.5rem;
+                    box-shadow: 0px 1px 2px 0px #1018280D;
+                    outline: none;
+                }
+            }
+            .userResCont {
+                display: none;
+                opacity: 0;
+                transition: all 0.3s ease-in;
+            }
         }
     }
 }
 
 @media screen and (max-width: 720px) {
     .userListWrapper {
-        .content {
-            div:nth-child(1) {
-                margin-left: 1.5rem;
-                input {
-                    width: 10rem !important;
+        .subWrapper {
+            .content {
+                div:nth-child(1) {
+                    margin-left: 1.5rem;
+                    input {
+                        width: 10rem !important;
+                    }
+                    fieldset {
+                        width: 15rem;
+                    }
                 }
-                fieldset {
-                    width: 15rem;
+                .userResCont {
+                    margin-right: 1rem;
                 }
-            }
-            .userResCont {
-                margin-right: 1rem;
             }
         }
     }

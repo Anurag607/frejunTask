@@ -43,7 +43,7 @@ const Login = () => {
   const styling = {
     username: React.useRef<HTMLInputElement>(null),
     pass: React.useRef<HTMLInputElement>(null),
-    warning: React.useRef<HTMLInputElement>(null),
+    warning: React.useRef<HTMLSpanElement>(null),
   };
 
   const HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -6,6 +6,9 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import UsersTable from "../components/table";
 import SearchComponent from "react-material-ui-searchbar";
+import bcrypt from "bcryptjs";
+
+type template = { username: string; password: string };
 
 const UserList = () => {
   const navigate = useNavigate();
@@ -17,14 +20,35 @@ const UserList = () => {
   const tableRef = React.useRef(null);
   const loadingRef = React.useRef(null);
 
+  const styling = {
+    warning: React.useRef<HTMLSpanElement>(null),
+  };
+
   React.useEffect(() => {
+    document.querySelector("input")?.setAttribute("autocomplete", "off");
+    let auth: template = JSON.parse(
+      localStorage.getItem("auth") || '{ "username" : "", "password" : "" }'
+    );
+    bcrypt.compare(
+      import.meta.env.VITE_PASSWORD,
+      auth.password,
+      function (err: any, isMatch: boolean) {
+        if (err) throw err;
+        else if (!isMatch && auth.username !== import.meta.env.VITE_USERNAME) {
+          localStorage.removeItem("userList");
+          localStorage.removeItem("auth");
+          navigate("/", { replace: true });
+          return;
+        }
+      }
+    );
     if (originalUserList.length === 0) {
       fetch(import.meta.env.VITE_API, {
         method: "GET",
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "https://dummyjson.com",
+          "Access-Control-Allow-Origin": import.meta.env.VITE_API,
         },
       })
         .then((response) => {
@@ -77,6 +101,11 @@ const UserList = () => {
           userString = "";
         }
       });
+      if (filteredResults.length === 0) {
+        styling.warning.current!.style.display = "block";
+      } else {
+        styling.warning.current!.style.display = "none";
+      }
       setUserList(filteredResults);
     }
   };
@@ -89,20 +118,26 @@ const UserList = () => {
           variant="outlined"
           onClick={() => {
             localStorage.removeItem("auth");
+            localStorage.removeItem("userList");
             navigate(`/`, { replace: false });
           }}
         >
           Logout
         </Button>
       </nav>
-      <div className={styles.content}>
-        <SearchComponent
-          sx={{ width: "20rem" }}
-          onChangeHandle={requestSearch}
-        />
-        <div ref={loadingRef}>Loading...</div>
-        <div className={styles.userResCont} ref={tableRef}>
-          <UsersTable data={userList} />
+      <div className={styles.subWrapper}>
+        <span className={styles.warning} ref={styling.warning}>
+          No User Matched!
+        </span>
+        <div className={styles.content}>
+          <SearchComponent
+            sx={{ width: "20rem" }}
+            onChangeHandle={requestSearch}
+          />
+          <div ref={loadingRef}>Loading...</div>
+          <div className={styles.userResCont} ref={tableRef}>
+            <UsersTable data={userList} />
+          </div>
         </div>
       </div>
     </main>
